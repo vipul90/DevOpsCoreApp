@@ -48,7 +48,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				sleep(time:3,unit:"SECONDS")
+				sleep(time:2,unit:"SECONDS")
 			}
 		}
 	}
@@ -65,7 +65,7 @@ stages
 		{
 		    withSonarQubeEnv('SonarTestServer')
 			{
-				sleep(time:3,unit:"SECONDS")
+				sleep(time:4,unit:"SECONDS")
 			}
 		}
 	}
