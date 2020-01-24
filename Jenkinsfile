@@ -52,7 +52,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				sh 'dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0'
+				//sh 'dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0'
 			}
 		}
 	}
