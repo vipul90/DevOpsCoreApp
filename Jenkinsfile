@@ -11,15 +11,15 @@ environment
 }
 	
 options
-   {
-      timeout(time: 1, unit: 'HOURS')
+{
+    timeout(time: 1, unit: 'HOURS')
       
-      // Discard old builds after 5 days or 5 builds count.
-      buildDiscarder(logRotator(daysToKeepStr: '5', numToKeepStr: '5'))
+    // Discard old builds after 5 days or 5 builds count.
+    buildDiscarder(logRotator(daysToKeepStr: '5', numToKeepStr: '5'))
 	  
-	  //To avoid concurrent builds to avoid multiple checkouts
-	  disableConcurrentBuilds()
-   }
+	//To avoid concurrent builds to avoid multiple checkouts
+	disableConcurrentBuilds()
+}
    
   
      
@@ -52,7 +52,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				sleep(time:2,unit:"SECONDS")
+				sh 'dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0'
 			}
 		}
 	}
@@ -70,7 +70,7 @@ stages
 		{
 		    withSonarQubeEnv('SonarTestServer')
 			{
-				sleep(time:4,unit:"SECONDS")
+				sh 'dotnet "${sonarScanner}" end'
 			}
 		}
 	}
