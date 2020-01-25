@@ -59,7 +59,17 @@ stages
 			sh "dotnet build -c Release -o Binaries/app/build"
 		}	
 	}
-	
+	stage('Unit test')
+	{
+		steps
+		{
+		  def MSTest = tool 'msbuild15ForTest'
+		  dir('Binaries\app\build')
+		  {
+			bat "${MSTest} /testcontainer:CoreAppMSTest.dll /resultsfile:Results.trx"
+		  }
+		}
+	}
 	stage ('Ending SonarQube Analysis')
 	{	
 		steps
