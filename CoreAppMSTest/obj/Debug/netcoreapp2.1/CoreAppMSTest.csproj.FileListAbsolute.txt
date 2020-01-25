@@ -1,0 +1,14 @@
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.deps.json
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.runtimeconfig.json
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.runtimeconfig.dev.json
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.dll
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.pdb
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.csprojAssemblyReference.cache
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.csproj.CoreCompileInputs.cache
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.AssemblyInfoInputs.cache
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.AssemblyInfo.cs
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.dll
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.pdb

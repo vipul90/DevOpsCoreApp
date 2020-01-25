@@ -5,7 +5,6 @@ D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\bin\Debug\netcoreapp2.1\C
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\bin\Debug\netcoreapp2.1\CoreApplication.pdb
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\bin\Debug\netcoreapp2.1\CoreApplication.Views.dll
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\bin\Debug\netcoreapp2.1\CoreApplication.Views.pdb
-D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\CoreApplication.csprojAssemblyReference.cache
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\CoreApplication.csproj.CoreCompileInputs.cache
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\CoreApplication.RazorAssemblyInfo.cache
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\CoreApplication.RazorAssemblyInfo.cs
@@ -30,3 +29,4 @@ D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\C
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\CoreApplication.dll
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\CoreApplication.pdb
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\CoreApplication.csproj.CopyComplete
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreApplication\obj\Debug\netcoreapp2.1\CoreApplication.csprojAssemblyReference.cache

@@ -48,7 +48,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				sh "dotnet ${scannerDirectory}/SonarScanner.MSBuild.dll begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0"
+				sleep(time:1,unit:"SECONDS")
 			}
 		}
 	}
@@ -59,13 +59,24 @@ stages
 			sh "dotnet build -c Release -o Binaries/app/build"
 		}	
 	}
+	stage('Unit test')
+	{
+		steps
+		{
+		  def MSTest = tool 'msbuild15ForTest'
+		  dir('Tests/Printing.Services.Test/bin/Debug')
+		  {
+			bat "${MSTest} /testcontainer:Printing.Services.Test.dll /resultsfile:Results.trx"
+		  }
+		}
+	}
 	stage ('Ending SonarQube Analysis')
 	{	
 		steps
 		{
 		    withSonarQubeEnv('SonarTestServer')
 			{
-				sh "dotnet ${scannerDirectory}/SonarScanner.MSBuild.dll end"
+				sleep(time:1,unit:"SECONDS")
 			}
 		}
 	}
