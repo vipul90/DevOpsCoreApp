@@ -5,7 +5,7 @@ environment
 {
     scannerToolPath = tool name: 'sonar_scanner_dotnet', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'    
 	MSTest = tool name: 'msbuild15ForTest'	
-	sonarScanner = "${scannerDirectory}/SonarScanner.MSBuild.dll"
+	sonarScanner = "${scannerToolPath}/SonarScanner.MSBuild.dll"
 }
 	
 options
