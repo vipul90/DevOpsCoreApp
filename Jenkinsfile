@@ -78,13 +78,13 @@ stages
 	        sh "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
-	stage('Unit test')
+	stage('Run Unit tests')
 	{
 		steps
 		{
 		  dir('Binaries/app/publish')
 		  {
-			bat "${MSTest} CoreAppMSTest.dll /Logger:trx"
+			sh "${MSTest} CoreAppMSTest.dll /Logger:trx"
 		  }
 		}
 	}
