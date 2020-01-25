@@ -64,7 +64,7 @@ stages
 		steps
 		{
 		  def MSTest = tool 'msbuild15ForTest'
-		  dir('Binaries\app\build')
+		  dir('Binaries/app/build')
 		  {
 			bat "${MSTest} /testcontainer:CoreAppMSTest.dll /resultsfile:Results.trx"
 		  }
