@@ -10,5 +10,11 @@ namespace CoreAppMSTest
         {
             Assert.IsTrue(true);
         }
+
+        [TestMethod]
+        public void SecondTest()
+        {
+            Assert.IsTrue(true);
+        }
     }
 }
