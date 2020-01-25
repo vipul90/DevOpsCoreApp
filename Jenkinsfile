@@ -3,8 +3,9 @@ pipeline{
 
 environment
 {
-    scannerDirectory = 'D:/SonarQube'   
+    scannerToolPath = tool name: 'sonar_scanner_dotnet', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'    
 	MSTest = tool name: 'msbuild15ForTest'	
+	sonarScanner = "${scannerDirectory}/SonarScanner.MSBuild.dll"
 }
 	
 options
@@ -49,7 +50,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				sleep(time:1,unit:"SECONDS")
+				sh "dotnet ${sonarScanner} end"
 			}
 		}
 	}
