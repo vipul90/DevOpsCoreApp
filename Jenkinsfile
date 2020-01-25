@@ -3,7 +3,7 @@ pipeline{
 
 environment
 {
-    scannerHome = tool name: 'sonar_scanner_dotnet', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'   
+    scannerDirectory = 'D:/SonarQube'   	
 }
 	
 options
@@ -21,7 +21,14 @@ options
      
 stages
 {
-	 stage ('Restoring Nuget')
+	stage ('Branch Checkout')
+    {
+		steps
+		{
+		    checkout scm	 
+		}
+    }
+	stage ('Restoring Nuget')
     {
 		steps
 		{
@@ -35,6 +42,16 @@ stages
 			sh "dotnet clean"	 
 		}
     }
+	stage ('Starting Sonarqube analysis')
+	{
+		steps
+		{
+			withSonarQubeEnv('SonarTestServer')
+			{
+				sh "dotnet ${scannerDirectory}/SonarScanner.MSBuild.dll begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0"
+			}
+		}
+	}
 	stage ('Building Code')
 	{
 		steps
@@ -42,15 +59,24 @@ stages
 			sh "dotnet build -c Release -o Binaries/app/build"
 		}	
 	}
-	stage ('Release Artifacts')
+	stage ('Publishing Release Artifacts')
 	{
 	    steps
 	    {
 	        sh "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
-	
-	stage ('Docker Image')
+	stage ('Ending SonarQube Analysis')
+	{	
+		steps
+		{
+		    withSonarQubeEnv('SonarTestServer')
+			{
+				sh "dotnet ${scannerDirectory}/SonarScanner.MSBuild.dll end"
+			}
+		}
+	}
+	stage ('Building Docker Image')
 	{
 		steps
 		{
@@ -58,16 +84,16 @@ stages
 		}
 	}
 	
-	stage ('Stop Running container')
+	stage ('Stop container if running')
 	{
 	    steps
 	    {
 	        sh '''
-                ContainerID=$(docker ps | grep 5435 | cut -d " " -f 1)
-                if [  $ContainerID ]
+                ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)
+                if [  $ContainerIDByPort ]
                 then
-                    docker stop $ContainerID
-                    docker rm -f $ContainerID
+                    docker stop $ContainerIDByPort
+                    docker rm -f $ContainerIDByPort
                 fi
 				
 				ContainerIDByName=$(docker ps -all | grep devopscoreapp | cut -d " " -f 1)
