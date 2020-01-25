@@ -60,16 +60,7 @@ stages
 			sh "dotnet build -c Release -o Binaries/app/build"
 		}	
 	}
-	stage('Unit test')
-	{
-		steps
-		{
-		  dir('Binaries/app/build')
-		  {
-			bat "${MSTest} CoreAppMSTest.dll /Logger:trx"
-		  }
-		}
-	}
+	
 	stage ('Ending SonarQube Analysis')
 	{	
 		steps
@@ -86,6 +77,16 @@ stages
 	    {
 	        sh "dotnet publish -c Release -o Binaries/app/publish"
 	    }
+	}
+	stage('Unit test')
+	{
+		steps
+		{
+		  dir('Binaries/app/publish')
+		  {
+			bat "${MSTest} CoreAppMSTest.dll /Logger:trx"
+		  }
+		}
 	}
 	
 	stage ('Building Docker Image')
