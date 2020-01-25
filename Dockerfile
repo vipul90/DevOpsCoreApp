@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
 WORKDIR /app
 COPY Binaries/app/publish .
 ENTRYPOINT ["dotnet", "CoreApplication.dll"]
