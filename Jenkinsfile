@@ -39,14 +39,14 @@ stages
 	{
 		steps
 		{
-			sh "dotnet build -c Release -o DevopsAppPublish/app/build"
+			sh "dotnet build -c Release -o Binaries/app/build"
 		}	
 	}
 	stage ('Release Artifacts')
 	{
 	    steps
 	    {
-	        sh "dotnet publish -c Release -o DevopsAppPublish/app/publish"
+	        sh "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
 	
@@ -54,7 +54,7 @@ stages
 	{
 		steps
 		{
-		    sh returnStdout: true, script: 'docker build --no-cache -t vipulchohan_devopsapp:${BUILD_NUMBER} .'
+		    sh returnStdout: true, script: 'docker build --no-cache -t vipulchohan_coreapp:${BUILD_NUMBER} .'
 		}
 	}
 	
@@ -63,14 +63,14 @@ stages
 	    steps
 	    {
 	        sh '''
-                ContainerID=$(docker ps | grep 5401 | cut -d " " -f 1)
+                ContainerID=$(docker ps | grep 5405 | cut -d " " -f 1)
                 if [  $ContainerID ]
                 then
                     docker stop $ContainerID
                     docker rm -f $ContainerID
                 fi
 				
-				ContainerIDByName=$(docker ps -all | grep devopsAppNetCore | cut -d " " -f 1)
+				ContainerIDByName=$(docker ps -all | grep devopscoreapp | cut -d " " -f 1)
                 if [  $ContainerIDByName ]
                 then
                     docker stop $ContainerIDByName
@@ -83,7 +83,7 @@ stages
 	{
 	    steps
 	    {
-	       sh 'docker run --name devopsAppNetCore -d -p 5401:90 vipulchohan_devopsapp:${BUILD_NUMBER}'
+	       sh 'docker run --name devopscoreapp -d -p 5405:90 vipulchohan_coreapp:${BUILD_NUMBER}'
 	    }
 	}
 	

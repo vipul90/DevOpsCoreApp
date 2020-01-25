@@ -1,7 +1,6 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime 
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
 WORKDIR /app
-COPY DevopsAppPublish/app/publish .
-ENTRYPOINT ["dotnet", "DevopsApp.dll"]
+COPY Binaries/app/publish .
+ENTRYPOINT ["dotnet", "CoreApplication.dll"]
 EXPOSE 90
 EXPOSE 444
