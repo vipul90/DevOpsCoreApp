@@ -83,7 +83,7 @@ stages
 	{
 	    steps
 	    {
-	       sh 'docker run --name devopscoreapp -d -p 5425:90 vipulchohan_coreapp:${BUILD_NUMBER}'
+	       sh 'docker run --name devopscoreapp -d -p 5425:80 vipulchohan_coreapp:${BUILD_NUMBER}'
 	    }
 	}
 	
