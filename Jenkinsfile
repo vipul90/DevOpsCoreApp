@@ -3,7 +3,8 @@ pipeline{
 
 environment
 {
-    scannerDirectory = 'D:/SonarQube'   	
+    scannerDirectory = 'D:/SonarQube'   
+	MSTest = tool name: 'msbuild15ForTest'	
 }
 	
 options
@@ -63,7 +64,6 @@ stages
 	{
 		steps
 		{
-		  def MSTest = tool 'msbuild15ForTest'
 		  dir('Binaries/app/build')
 		  {
 			bat "${MSTest} /testcontainer:CoreAppMSTest.dll /resultsfile:Results.trx"
