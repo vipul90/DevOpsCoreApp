@@ -64,7 +64,7 @@ stages
 	{
 		steps
 		{
-		  dir('CoreAppMSTest\bin\Debug\netcoreapp2.1')
+		  dir('CoreAppMSTest/bin/Debug/netcoreapp2.1')
 		  {
 			bat "${MSTest} /testcontainer:CoreAppMSTest.dll /resultsfile:Results.trx"
 		  }
