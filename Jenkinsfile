@@ -50,7 +50,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				sh "dotnet ${sonarScanner} end"
+				sh '''dotnet "${sonarScanner}" end'''
 			}
 		}
 	}
