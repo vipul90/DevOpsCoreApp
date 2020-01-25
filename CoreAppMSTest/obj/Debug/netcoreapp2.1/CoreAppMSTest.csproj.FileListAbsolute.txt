@@ -11,3 +11,4 @@ D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\Cor
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.AssemblyInfo.cs
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.dll
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.pdb
+D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.csprojAssemblyReference.cache
