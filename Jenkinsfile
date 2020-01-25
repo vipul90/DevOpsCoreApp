@@ -59,6 +59,16 @@ stages
 			sh "dotnet build -c Release -o Binaries/app/build"
 		}	
 	}
+	stage ('Ending SonarQube Analysis')
+	{	
+		steps
+		{
+		    withSonarQubeEnv('SonarTestServer12')
+			{
+				sleep(time:3,unit:"SECONDS")
+			}
+		}
+	}
 	stage ('Publishing Release Artifacts')
 	{
 	    steps
@@ -66,16 +76,7 @@ stages
 	        sh "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
-	stage ('Ending SonarQube Analysis')
-	{	
-		steps
-		{
-		    withSonarQubeEnv('SonarTestServer')
-			{
-				sleep(time:3,unit:"SECONDS")
-			}
-		}
-	}
+	
 	stage ('Building Docker Image')
 	{
 		steps
