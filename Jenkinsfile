@@ -66,7 +66,7 @@ stages
 		{
 		  dir('Binaries/app/build')
 		  {
-			bat "'''${MSTest} /testcontainer:CoreAppMSTest.dll /resultsfile:Results.trx'''"
+			bat "${scannerDirectory}/MSTest.exe /testcontainer:CoreAppMSTest.dll /resultsfile:Results.trx"
 		  }
 		}
 	}
