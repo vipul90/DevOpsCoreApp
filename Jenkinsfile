@@ -63,7 +63,7 @@ stages
 	{	
 		steps
 		{
-		    withSonarQubeEnv('SonarTestServer12')
+		    withSonarQubeEnv('SonarTestServer')
 			{
 				sleep(time:3,unit:"SECONDS")
 			}
