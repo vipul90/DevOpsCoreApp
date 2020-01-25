@@ -6,7 +6,6 @@ D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\Cor
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.runtimeconfig.dev.json
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.dll
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.pdb
-D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.csprojAssemblyReference.cache
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.csproj.CoreCompileInputs.cache
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.AssemblyInfoInputs.cache
 D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\obj\Debug\netcoreapp2.1\CoreAppMSTest.AssemblyInfo.cs
