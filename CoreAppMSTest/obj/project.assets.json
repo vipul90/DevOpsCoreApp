@@ -1617,6 +1617,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "TestRunner/1.10.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
       }
     }
   },
@@ -5796,6 +5805,33 @@
         "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "TestRunner/1.10.0": {
+      "sha512": "zugQKiJbrDZDdjAQFYuyUH7qpWFf0HEvfoe/sO/8oIJlwJcdIKldSuffML0YXhLhl0YaVsFz7m79bfKD6Gf3jA==",
+      "type": "package",
+      "path": "testrunner/1.10.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "changelog.md",
+        "lib/net461/_._",
+        "lib/netcoreapp2.0/_._",
+        "license.txt",
+        "readme.md",
+        "testrunner.1.10.0.nupkg.sha512",
+        "testrunner.nuspec",
+        "tools/net461/testrunner.exe",
+        "tools/net461/testrunner.exe.config",
+        "tools/net461/testrunner.pdb",
+        "tools/netcoreapp2.0/testrunner.deps.json",
+        "tools/netcoreapp2.0/testrunner.dll",
+        "tools/netcoreapp2.0/testrunner.pdb",
+        "tools/netcoreapp2.0/testrunner.runtimeconfig.json",
+        "tools/testrunner.exe",
+        "tools/testrunner.exe.config",
+        "tools/testrunner.pdb"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -5803,7 +5839,8 @@
       "MSTest.TestAdapter >= 1.3.2",
       "MSTest.TestFramework >= 1.3.2",
       "Microsoft.NET.Test.Sdk >= 15.9.0",
-      "Microsoft.NETCore.App >= 2.1.0"
+      "Microsoft.NETCore.App >= 2.1.0",
+      "TestRunner >= 1.10.0"
     ]
   },
   "packageFolders": {
@@ -5864,6 +5901,10 @@
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
+          },
+          "TestRunner": {
+            "target": "Package",
+            "version": "[1.10.0, )"
           }
         },
         "imports": [

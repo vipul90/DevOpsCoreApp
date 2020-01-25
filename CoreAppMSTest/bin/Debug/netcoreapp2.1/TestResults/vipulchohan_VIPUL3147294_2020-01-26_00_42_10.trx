@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="1a138273-e037-48c7-9ae0-4f60667ea126" name="vipulchohan@VIPUL3147294 2020-01-26 00:42:10" runUser="NAGARRO\vipulchohan" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2020-01-26T00:42:10.6177054+05:30" queuing="2020-01-26T00:42:10.6177054+05:30" start="2020-01-26T00:42:09.5671950+05:30" finish="2020-01-26T00:42:10.6376990+05:30" />
+  <TestSettings name="default" id="ac2beccd-60f4-400f-a91d-e42c84a882a7">
+    <Deployment runDeploymentRoot="vipulchohan_VIPUL3147294_2020-01-26_00_42_10" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="d182c33b-df96-4c65-acb1-425aa05ace0f" testId="e73ed5cc-5d8e-6b86-f4c9-0543381cc9c0" testName="TestMethod1" computerName="VIPUL3147294" duration="00:00:00.0000762" startTime="2020-01-26T00:42:10.4414381+05:30" endTime="2020-01-26T00:42:10.4416547+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d182c33b-df96-4c65-acb1-425aa05ace0f" />
+    <UnitTestResult executionId="8a5fc9d9-c365-45fa-a250-a699003aa760" testId="c01f62b0-acd3-0cbb-0f64-cd284ff6c266" testName="FirstSecond" computerName="VIPUL3147294" duration="00:00:00.0061312" startTime="2020-01-26T00:42:10.3816055+05:30" endTime="2020-01-26T00:42:10.4225473+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8a5fc9d9-c365-45fa-a250-a699003aa760" />
+    <UnitTestResult executionId="0703be60-d134-4f87-ada8-d4ba09d7ad97" testId="4375398c-0ada-e4f4-f93b-777cd52efc48" testName="SecondTest" computerName="VIPUL3147294" duration="00:00:00.0000390" startTime="2020-01-26T00:42:10.4416616+05:30" endTime="2020-01-26T00:42:10.4417651+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0703be60-d134-4f87-ada8-d4ba09d7ad97" />
+    <UnitTestResult executionId="15b75a76-b7b8-493e-b744-1ed370c47f74" testId="4932430d-4fe2-b96f-a8cd-0c2d5f10606a" testName="SecondSecond" computerName="VIPUL3147294" duration="00:00:00.0001411" startTime="2020-01-26T00:42:10.4411223+05:30" endTime="2020-01-26T00:42:10.4414159+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="15b75a76-b7b8-493e-b744-1ed370c47f74" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="FirstSecond" storage="d:\nagp\devops\coreapp\coreapplication\coreappmstest\bin\debug\netcoreapp2.1\coreappmstest.dll" id="c01f62b0-acd3-0cbb-0f64-cd284ff6c266">
+      <Execution id="8a5fc9d9-c365-45fa-a250-a699003aa760" />
+      <TestMethod codeBase="D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.dll" adapterTypeName="executor://mstestadapter/v2" className="CoreAppMSTest.SeconClass" name="FirstSecond" />
+    </UnitTest>
+    <UnitTest name="TestMethod1" storage="d:\nagp\devops\coreapp\coreapplication\coreappmstest\bin\debug\netcoreapp2.1\coreappmstest.dll" id="e73ed5cc-5d8e-6b86-f4c9-0543381cc9c0">
+      <Execution id="d182c33b-df96-4c65-acb1-425aa05ace0f" />
+      <TestMethod codeBase="D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.dll" adapterTypeName="executor://mstestadapter/v2" className="CoreAppMSTest.UnitTest1" name="TestMethod1" />
+    </UnitTest>
+    <UnitTest name="SecondSecond" storage="d:\nagp\devops\coreapp\coreapplication\coreappmstest\bin\debug\netcoreapp2.1\coreappmstest.dll" id="4932430d-4fe2-b96f-a8cd-0c2d5f10606a">
+      <Execution id="15b75a76-b7b8-493e-b744-1ed370c47f74" />
+      <TestMethod codeBase="D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.dll" adapterTypeName="executor://mstestadapter/v2" className="CoreAppMSTest.SeconClass" name="SecondSecond" />
+    </UnitTest>
+    <UnitTest name="SecondTest" storage="d:\nagp\devops\coreapp\coreapplication\coreappmstest\bin\debug\netcoreapp2.1\coreappmstest.dll" id="4375398c-0ada-e4f4-f93b-777cd52efc48">
+      <Execution id="0703be60-d134-4f87-ada8-d4ba09d7ad97" />
+      <TestMethod codeBase="D:\NAGP\Devops\CoreApp\CoreApplication\CoreAppMSTest\bin\Debug\netcoreapp2.1\CoreAppMSTest.dll" adapterTypeName="executor://mstestadapter/v2" className="CoreAppMSTest.UnitTest1" name="SecondTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e73ed5cc-5d8e-6b86-f4c9-0543381cc9c0" executionId="d182c33b-df96-4c65-acb1-425aa05ace0f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c01f62b0-acd3-0cbb-0f64-cd284ff6c266" executionId="8a5fc9d9-c365-45fa-a250-a699003aa760" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4375398c-0ada-e4f4-f93b-777cd52efc48" executionId="0703be60-d134-4f87-ada8-d4ba09d7ad97" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4932430d-4fe2-b96f-a8cd-0c2d5f10606a" executionId="15b75a76-b7b8-493e-b744-1ed370c47f74" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>
