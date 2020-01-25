@@ -42,16 +42,6 @@ stages
 			sh "dotnet clean"	 
 		}
     }
-	stage ('Starting Sonarqube analysis')
-	{
-		steps
-		{
-			withSonarQubeEnv('SonarTestServer')
-			{
-				sh "dotnet ${scannerDirectory}/SonarScanner.MSBuild.dll begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0"
-			}
-		}
-	}
 	stage ('Building Code')
 	{
 		steps
@@ -65,16 +55,6 @@ stages
 	    {
 	        sh "dotnet publish -c Release -o Binaries/app/publish"
 	    }
-	}
-	stage ('Ending SonarQube Analysis')
-	{	
-		steps
-		{
-		    withSonarQubeEnv('SonarTestServer')
-			{
-				sh "dotnet ${scannerDirectory}/SonarScanner.MSBuild.dll end"
-			}
-		}
 	}
 	stage ('Building Docker Image')
 	{
