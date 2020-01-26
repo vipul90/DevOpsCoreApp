@@ -4,7 +4,7 @@ pipeline{
 environment
 {
     scannerToolPath = tool name: 'sonar_scanner_dotnet', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'  
-	//You can use below path by uncommenting it. But i configured under 'Global Tool Configuration' and using the same.
+	//You can use below path by uncommenting it. But i configured under 'Global Tool Configuration' using the below mentioned path and setting MSTest with the same.
 	//MSTest = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/Common7/IDE/CommonExtensions/Microsoft/TestWindow/vstest.console.exe"
 	MSTest = tool name: 'msbuild15ForTest'	
 	sonarScanner = "${scannerToolPath}/SonarScanner.MSBuild.dll"
@@ -52,7 +52,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				sleep(time:1,unit:"SECONDS")
+				sleep(time:2,unit:"SECONDS")
 			}
 		}
 	}
@@ -70,7 +70,7 @@ stages
 		{
 		    withSonarQubeEnv('SonarTestServer')
 			{
-				sleep(time:1,unit:"SECONDS")
+				sleep(time:4,unit:"SECONDS")
 			}
 		}
 	}
@@ -81,7 +81,7 @@ stages
 	        sh "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
-	stage('Run Unit tests')
+	stage('Run Unit Tests')
 	{
 		steps
 		{
@@ -100,7 +100,7 @@ stages
 		}
 	}
 	
-	stage ('Stop container If running')
+	stage ('Stop Running container If any')
 	{
 	    steps
 	    {
@@ -132,9 +132,9 @@ stages
 }
 
  post {
-        always 
+         always 
 		{
-			echo "*********** Executing post tasks like Email notifications *****************"
+			emailext attachmentsPattern: 'report.html', body: '${JELLY_SCRIPT,template="health"}', mimeType: 'text/html', recipientProviders: [[$class: 'RequesterRecipientProvider']], replyTo: 'vipul.chohan@nagarro.com', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'vipul.chohan@nagarro.com'
         }
     }
 }
