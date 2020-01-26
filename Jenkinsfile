@@ -100,7 +100,7 @@ stages
 		}
 	}
 	
-	stage ('Stop Running container If any')
+	stage ('Stop Running Container If Any')
 	{
 	    steps
 	    {
@@ -121,7 +121,7 @@ stages
             '''
 	    }
 	}
-	stage ('Docker deployment')
+	stage ('Docker Deployment')
 	{
 	    steps
 	    {
