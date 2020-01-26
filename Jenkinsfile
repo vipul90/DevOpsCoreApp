@@ -3,8 +3,10 @@ pipeline{
 
 environment
 {
-    scannerToolPath = tool name: 'sonar_scanner_dotnet', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'    
-	MSTest = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/Common7/IDE/CommonExtensions/Microsoft/TestWindow/vstest.console.exe"
+    scannerToolPath = tool name: 'sonar_scanner_dotnet', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'  
+	//You can use below path by uncommenting it. But i configured under 'Global Tool Configuration' and using the same.
+	//MSTest = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/Common7/IDE/CommonExtensions/Microsoft/TestWindow/vstest.console.exe"
+	MSTest = tool name: 'msbuild15ForTest'	
 	sonarScanner = "${scannerToolPath}/SonarScanner.MSBuild.dll"
 }
 	
@@ -44,7 +46,7 @@ stages
 			sh "dotnet clean"	 
 		}
     }
-	stage ('Starting Sonarqube analysis')
+	stage ('Starting Sonarqube Analysis')
 	{
 		steps
 		{
@@ -98,7 +100,7 @@ stages
 		}
 	}
 	
-	stage ('Stop container if running')
+	stage ('Stop container If running')
 	{
 	    steps
 	    {
