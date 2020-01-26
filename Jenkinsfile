@@ -25,13 +25,7 @@ options
      
 stages
 {
-	stage ('Branch Checkout')
-    {
-		steps
-		{
-		    checkout scm	 
-		}
-    }
+	
 	stage ('Restoring Nuget')
     {
 		steps
