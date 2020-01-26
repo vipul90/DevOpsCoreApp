@@ -25,11 +25,18 @@ options
      
 stages
 {
-	
+	stage ('Branch Checkout')
+    {
+		steps
+		{
+		    checkout scm	 
+		}
+    }
 	stage ('Restoring Nuget')
     {
 		steps
 		{
+			sleep(time:10,unit:"SECONDS")
 			sh "dotnet restore"	 
 		}
     }
