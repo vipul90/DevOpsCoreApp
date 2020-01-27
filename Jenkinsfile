@@ -80,7 +80,7 @@ stages
 		}
 	}
 	
-	stage ('Stop Running Container If Any')
+	stage ('Stop Running Container')
 	{
 	    steps
 	    {
