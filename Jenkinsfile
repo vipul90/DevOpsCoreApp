@@ -35,14 +35,7 @@ stages
 		{
 			sh "dotnet restore"	 
 		}
-    }
-	stage ('Clean Code')
-    {
-		steps
-		{
-			sh "dotnet clean"	 
-		}
-    }
+    }	
 	stage ('Starting Sonarqube Analysis')
 	{
 		steps
