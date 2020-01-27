@@ -3,10 +3,7 @@ pipeline{
 
 environment
 {
-    scannerToolPath = tool name: 'sonar_scanner_dotnet', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'  
-	//You can use below path by uncommenting it. But i configured under 'Global Tool Configuration' using the below mentioned path and setting MSTest with the same.
-	//MSTest = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/Common7/IDE/CommonExtensions/Microsoft/TestWindow/vstest.console.exe"
-	MSTest = tool name: 'msbuild15ForTest'	
+    scannerToolPath = 'C:/Program Files (x86)/Jenkins/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/sonar_scanner_dotnet' 
 	sonarScanner = "${scannerToolPath}/SonarScanner.MSBuild.dll"
 }
 	
@@ -36,7 +33,6 @@ stages
     {
 		steps
 		{
-			sleep(time:10,unit:"SECONDS")
 			sh "dotnet restore"	 
 		}
     }
@@ -82,16 +78,6 @@ stages
 	        sh "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
-	stage('Run Unit Tests')
-	{
-		steps
-		{
-		  dir('Binaries/app/publish')
-		  {
-			sh '"${MSTest}" CoreAppMSTest.dll /Logger:trx'
-		  }
-		}
-	}
 	
 	stage ('Building Docker Image')
 	{
@@ -106,18 +92,11 @@ stages
 	    steps
 	    {
 	        sh '''
-                ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)
-                if [  $ContainerIDByPort ]
+                ContainerID=$(docker ps | grep 5435 | cut -d " " -f 1)
+                if [  $ContainerID ]
                 then
-                    docker stop $ContainerIDByPort
-                    docker rm -f $ContainerIDByPort
-                fi
-				
-				ContainerIDByName=$(docker ps -all | grep devopscoreapp | cut -d " " -f 1)
-                if [  $ContainerIDByName ]
-                then
-                    docker stop $ContainerIDByName
-                    docker rm -f $ContainerIDByName
+                    docker stop $ContainerID
+                    docker rm -f $ContainerID
                 fi
             '''
 	    }
@@ -133,9 +112,9 @@ stages
 }
 
  post {
-         always 
+        always 
 		{
-			emailext attachmentsPattern: 'report.html', body: '${JELLY_SCRIPT,template="health"}', mimeType: 'text/html', recipientProviders: [[$class: 'RequesterRecipientProvider']], replyTo: 'vipul.chohan@nagarro.com', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'vipul.chohan@nagarro.com'
+			echo "*********** Executing post tasks like Email notifications *****************"
         }
     }
 }
