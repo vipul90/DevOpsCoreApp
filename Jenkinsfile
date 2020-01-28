@@ -125,7 +125,7 @@ stages
 	{
 	    steps
 	    {
-	       bat 'docker run --name devopscoreapp -d -p 5435:80 vipulchohan_coreapp:${BUILD_NUMBER}'
+	       bat """docker run --name devopscoreapp -d -p 5435:80 vipulchohan_coreapp:${BUILD_NUMBER}"""
 	    }
 	}
 	
