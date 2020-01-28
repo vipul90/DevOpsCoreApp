@@ -96,7 +96,7 @@ stages
 	{
 		steps
 		{
-		    bat returnStdout: true, script: 'docker build --no-cache -t vipulchohan_coreapp:${BUILD_NUMBER} .'
+		    bat """docker build --no-cache -t vipulchohan_coreapp:${BUILD_NUMBER} ."""
 		}
 	}
 	
