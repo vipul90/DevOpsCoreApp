@@ -36,14 +36,14 @@ stages
     {
 		steps
 		{
-			sh "dotnet restore"	 
+			bat "dotnet restore"	 
 		}
     }
 	stage ('Clean Code')
     {
 		steps
 		{
-			sh "dotnet clean"	 
+			bat "dotnet clean"	 
 		}
     }
 	stage ('Starting Sonarqube Analysis')
@@ -52,7 +52,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				sh 'dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0'
+				bat 'dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0'
 			}
 		}
 	}
@@ -60,7 +60,7 @@ stages
 	{
 		steps
 		{
-			sh "dotnet build -c Release -o Binaries/app/build"
+			bat "dotnet build -c Release -o Binaries/app/build"
 		}	
 	}
 	
@@ -70,7 +70,7 @@ stages
 		{
 		    withSonarQubeEnv('SonarTestServer')
 			{
-				sh 'dotnet "${sonarScanner}" end'
+				bat 'dotnet "${sonarScanner}" end'
 			}
 		}
 	}
@@ -78,7 +78,7 @@ stages
 	{
 	    steps
 	    {
-	        sh "dotnet publish -c Release -o Binaries/app/publish"
+	        bat "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
 	stage('Run Unit Tests')
@@ -87,7 +87,7 @@ stages
 		{
 		  dir('Binaries/app/publish')
 		  {
-			sh '"${MSTest}" CoreAppMSTest.dll /Logger:trx'
+			bat '"${MSTest}" CoreAppMSTest.dll /Logger:trx'
 		  }
 		}
 	}
@@ -96,7 +96,7 @@ stages
 	{
 		steps
 		{
-		    sh returnStdout: true, script: 'docker build --no-cache -t vipulchohan_coreapp:${BUILD_NUMBER} .'
+		    bat returnStdout: true, script: 'docker build --no-cache -t vipulchohan_coreapp:${BUILD_NUMBER} .'
 		}
 	}
 	
@@ -104,7 +104,7 @@ stages
 	{
 	    steps
 	    {
-	        sh '''
+	        bat '''
                 ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)
                 if [  $ContainerIDByPort ]
                 then
@@ -125,7 +125,7 @@ stages
 	{
 	    steps
 	    {
-	       sh 'docker run --name devopscoreapp -d -p 5435:80 vipulchohan_coreapp:${BUILD_NUMBER}'
+	       bat 'docker run --name devopscoreapp -d -p 5435:80 vipulchohan_coreapp:${BUILD_NUMBER}'
 	    }
 	}
 	
