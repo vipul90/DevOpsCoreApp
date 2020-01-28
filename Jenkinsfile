@@ -87,7 +87,7 @@ stages
 		{
 		  dir('Binaries/app/publish')
 		  {
-			bat '"${MSTest}" CoreAppMSTest.dll /Logger:trx'
+			bat """"${MSTest}" CoreAppMSTest.dll /Logger:trx"""
 		  }
 		}
 	}
