@@ -52,7 +52,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				bat 'dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0'
+				bat """dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0"""
 			}
 		}
 	}
@@ -70,7 +70,7 @@ stages
 		{
 		    withSonarQubeEnv('SonarTestServer')
 			{
-				bat 'dotnet "${sonarScanner}" end'
+				bat """dotnet "${sonarScanner}" end"""
 			}
 		}
 	}
