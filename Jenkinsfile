@@ -36,7 +36,6 @@ stages
     {
 		steps
 		{
-			sleep(time:10,unit:"SECONDS")
 			sh "dotnet restore"	 
 		}
     }
