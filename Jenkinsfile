@@ -104,7 +104,7 @@ stages
 	{
 	    steps
 	    {
-	        bat """
+	        bat "
                 ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)
                 if [  $ContainerIDByPort ]
                 then
@@ -118,7 +118,7 @@ stages
                     docker stop $ContainerIDByName
                     docker rm -f $ContainerIDByName
                 fi
-            """
+            "
 	    }
 	}
 	stage ('Docker Deployment')
