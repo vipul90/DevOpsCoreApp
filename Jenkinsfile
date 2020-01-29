@@ -25,13 +25,6 @@ options
      
 stages
 {
-	stage ('Building Docker Image')
-	{
-		steps
-		{
-		    bat label: '', script: 'docker build --no-cache -t vipulchohan_coreapp:8 .'
-		}
-	}
 	stage ('Stop Running Container If Any')
 	{
 		steps
