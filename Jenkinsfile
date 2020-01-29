@@ -30,7 +30,7 @@ stages
 	    steps
 	    {
 	        bat """set ContainerIDByPort=docker ps | grep 5435 | cut -d " " -f 1
-				echo %ContainerIDByPort"""
+				echo "%ContainerIDByPort" """
 	    }
 	}
 	
@@ -39,7 +39,7 @@ stages
  post {
          always 
 		{
-			emailext attachmentsPattern: 'report.html', body: '${JELLY_SCRIPT,template="health"}', mimeType: 'text/html', recipientProviders: [[$class: 'RequesterRecipientProvider']], replyTo: 'vipul.chohan@nagarro.com', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'vipul.chohan@nagarro.com'
+			
         }
     }
 }
