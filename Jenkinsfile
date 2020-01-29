@@ -27,11 +27,6 @@ stages
 {
 	stage ('Stop Running Container If Any')
 	{
-	    steps
-	    {
-	        bat label: '', script: '''set ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)
-				if DEFINED ContainerIDByPort (echo password is %ContainerIDByPort% , right?) ELSE (echo nothing)'''
-	    }
 		steps
         {
                 bat """docker ps -q --filter "name=devopscoreapp" | grep -q . && (docker stop devopscoreapp && docker rm -fv devopscoreapp) || true """
