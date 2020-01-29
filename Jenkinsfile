@@ -96,7 +96,7 @@ stages
 	{
 		steps
 		{
-		    bat label: '', script: 'docker build --no-cache -t vipulchohan_coreapp:${BUILD_NUMBER} .'
+		    bat returnStdout: true, label: '', script: """docker build --no-cache -t vipulchohan_coreapp:${BUILD_NUMBER} ."""
 		}
 	}
 	stage ('Stop Running Container If Any')
@@ -112,7 +112,7 @@ stages
 	{
 	    steps
 	    {
-	       bat label: '', script: 'docker run --name vipulchohan_devopscoreapp -d -p 5435:80 vipulchohan_coreapp:${BUILD_NUMBER}'
+	       bat returnStdout: true, label: '', script: """docker run --name vipulchohan_devopscoreapp -d -p 5435:80 vipulchohan_coreapp:${BUILD_NUMBER}"""
 	    }
 	}
 	
