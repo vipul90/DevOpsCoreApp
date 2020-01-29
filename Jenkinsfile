@@ -52,7 +52,7 @@ stages
 		{
 			withSonarQubeEnv('SonarTestServer')
 			{
-				bat """dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0"""
+				//bat """dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0"""
 			}
 		}
 	}
@@ -78,7 +78,7 @@ stages
 	{
 	    steps
 	    {
-	        bat "dotnet publish -c Release -o Binaries/app/publish"
+	        //bat "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
 	stage('Run Unit Tests')
@@ -104,21 +104,20 @@ stages
 	{
 	    steps
 	    {
-	        sh '''
-                ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)
-                if [  $ContainerIDByPort ]
-                then
-                    docker stop $ContainerIDByPort
-                    docker rm -f $ContainerIDByPort
-                fi
+	        bat """ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)^
+                if [  $ContainerIDByPort ]^
+                then^
+                    docker stop $ContainerIDByPort^
+                    docker rm -f $ContainerIDByPort^
+                fi^
 				
-				ContainerIDByName=$(docker ps -all | grep devopscoreapp | cut -d " " -f 1)
-                if [  $ContainerIDByName ]
-                then
-                    docker stop $ContainerIDByName
-                    docker rm -f $ContainerIDByName
+				ContainerIDByName=$(docker ps -all | grep devopscoreapp | cut -d " " -f 1)^
+                if [  $ContainerIDByName ]^
+                then^
+                    docker stop $ContainerIDByName^
+                    docker rm -f $ContainerIDByName^
                 fi
-            '''
+            """
 	    }
 	}
 	stage ('Docker Deployment')
