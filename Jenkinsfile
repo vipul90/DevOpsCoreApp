@@ -25,73 +25,6 @@ options
      
 stages
 {
-	stage ('Branch Checkout')
-    {
-		steps
-		{
-		    checkout scm	 
-		}
-    }
-	stage ('Restoring Nuget')
-    {
-		steps
-		{
-			bat "dotnet restore"	 
-		}
-    }
-	stage ('Clean Code')
-    {
-		steps
-		{
-			bat "dotnet clean"	 
-		}
-    }
-	stage ('Starting Sonarqube Analysis')
-	{
-		steps
-		{
-			withSonarQubeEnv('SonarTestServer')
-			{
-				//bat """dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0"""
-			}
-		}
-	}
-	stage ('Building Code')
-	{
-		steps
-		{
-			bat "dotnet build -c Release -o Binaries/app/build"
-		}	
-	}
-	
-	stage ('Ending SonarQube Analysis')
-	{	
-		steps
-		{
-		    withSonarQubeEnv('SonarTestServer')
-			{
-				//bat """dotnet "${sonarScanner}" end"""
-			}
-		}
-	}
-	stage ('Publishing Release Artifacts')
-	{
-	    steps
-	    {
-	        bat "dotnet publish -c Release -o Binaries/app/publish"
-	    }
-	}
-	stage('Run Unit Tests')
-	{
-		steps
-		{
-		  dir('Binaries/app/publish')
-		  {
-			bat """"${MSTest}" CoreAppMSTest.dll /Logger:trx"""
-		  }
-		}
-	}
-	
 	stage ('Building Docker Image')
 	{
 		steps
@@ -105,7 +38,8 @@ stages
 	    steps
 	    {
 	        bat """set ContainerIDByPort=docker ps | grep 5435 | cut -d " " -f 1
-                IF [%ContainerIDByPort] (
+				echo %ContainerIDByPort
+                IF (%ContainerIDByPort) (
 					docker stop %ContainerIDByPort
                     docker rm -f %ContainerIDByPort
                 )			
