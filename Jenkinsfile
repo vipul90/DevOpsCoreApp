@@ -70,7 +70,7 @@ stages
 		{
 		    withSonarQubeEnv('SonarTestServer')
 			{
-				bat """dotnet "${sonarScanner}" end"""
+				//bat """dotnet "${sonarScanner}" end"""
 			}
 		}
 	}
@@ -78,7 +78,7 @@ stages
 	{
 	    steps
 	    {
-	        //bat "dotnet publish -c Release -o Binaries/app/publish"
+	        bat "dotnet publish -c Release -o Binaries/app/publish"
 	    }
 	}
 	stage('Run Unit Tests')
