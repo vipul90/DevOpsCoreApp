@@ -25,13 +25,27 @@ options
      
 stages
 {
+	stage ('Building Docker Image')
+	{
+		steps
+		{
+		    bat label: '', script: 'docker build --no-cache -t vipulchohan_coreapp:8 .'
+		}
+	}
 	stage ('Stop Running Container If Any')
 	{
 		steps
         {
-                bat """docker ps -q --filter "name=devopscoreapp" | grep -q . && (docker stop devopscoreapp && docker rm -fv devopscoreapp) || true """
+                bat """docker ps -q --filter "name=vipulchohan_devopscoreapp" | grep -q . && (docker stop vipulchohan_devopscoreapp && docker rm -fv vipulchohan_devopscoreapp) || true """
         }
 
+	}
+	stage ('Docker Deployment')
+	{
+	    steps
+	    {
+	       bat label: '', script: 'docker run --name vipulchohan_devopscoreapp -d -p 5435:80 vipulchohan_coreapp:8'
+	    }
 	}
 	
 }
