@@ -32,14 +32,6 @@ stages
                 bat """docker ps | grep 5435 | cut -d " " -f 1 && (docker stop vipulchohan_devopscoreapp && docker rm -fv vipulchohan_devopscoreapp) || true """
         }
 
-	}
-	stage ('Docker Deployment')
-	{
-	    steps
-	    {
-	       bat label: '', script: 'docker run --name vipulchohan_devopscoreapp -d -p 5435:80 vipulchohan_coreapp:8'
-	    }
-	}
-	
+	}	
 }
 }
