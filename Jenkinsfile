@@ -29,8 +29,8 @@ stages
 	{
 	    steps
 	    {
-	        bat """set ContainerIDByPort=docker ps | grep 5435 | cut -d " " -f 1
-				if DEFINED ContainerIDByPort (echo password is %ContainerIDByPort% , right?) ELSE (echo nothing) """"
+	        bat """set ContainerIDByPort={docker ps | grep 5435 | cut -d " " -f 1}
+				if DEFINED ContainerIDByPort (echo password is %ContainerIDByPort% , right?) ELSE (echo nothing) """
 	    }
 	}
 	
