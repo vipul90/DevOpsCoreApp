@@ -25,13 +25,6 @@ options
      
 stages
 {
-	stage ('Building Docker Image')
-	{
-		steps
-		{
-		    bat """docker build --no-cache -t vipulchohan_coreapp:8 ."""
-		}
-	}
 	stage ('Stop Running Container If Any')
 	{
 	    steps
@@ -40,13 +33,7 @@ stages
 				if DEFINED ContainerIDByPort (echo password is %ContainerIDByPort% , right?) ELSE (echo nothing) """
 	    }
 	}
-	stage ('Docker Deployment')
-	{
-	    steps
-	    {
-	       bat """docker run --name devopscoreapp -d -p 5435:80 vipulchohan_coreapp:8"""
-	    }
-	}
+
 	
 }
 }
