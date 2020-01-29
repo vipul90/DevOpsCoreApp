@@ -104,12 +104,12 @@ stages
 	{
 	    steps
 	    {
-	        bat "set ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)
+	        bat """set ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)
                 IF [%ContainerIDByPort ] (
 					docker stop %ContainerIDByPort
                     docker rm -f %ContainerIDByPort
                 )			
-            "
+            """
 	    }
 	}
 	stage ('Docker Deployment')
