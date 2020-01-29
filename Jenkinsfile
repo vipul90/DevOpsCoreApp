@@ -30,7 +30,7 @@ stages
 	    steps
 	    {
 	        bat """set ContainerIDByPort=docker ps | grep 5435 | cut -d " " -f 1
-				echo "%ContainerIDByPort" """
+				echo OKAY! your password is %ContainerIDByPort% , right? """
 	    }
 	}
 	
