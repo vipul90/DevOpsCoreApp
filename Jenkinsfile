@@ -104,20 +104,12 @@ stages
 	{
 	    steps
 	    {
-	        bat """ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1)^
-                if [  $ContainerIDByPort ]^
-                then^
-                    docker stop $ContainerIDByPort^
-                    docker rm -f $ContainerIDByPort^
-                fi^
-				
-				ContainerIDByName=$(docker ps -all | grep devopscoreapp | cut -d " " -f 1)^
-                if [  $ContainerIDByName ]^
-                then^
-                    docker stop $ContainerIDByName^
-                    docker rm -f $ContainerIDByName^
-                fi
-            """
+	        bat "ContainerIDByPort=$(docker ps | grep 5435 | cut -d " " -f 1) ^
+                IF [$ContainerIDByPort ] (
+					docker stop $ContainerIDByPort ^
+                    docker rm -f $ContainerIDByPort ^
+                )			
+            "
 	    }
 	}
 	stage ('Docker Deployment')
