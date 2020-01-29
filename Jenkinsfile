@@ -25,20 +25,96 @@ options
      
 stages
 {
+	stage ('Branch Checkout')
+    {
+		steps
+		{
+		    checkout scm	 
+		}
+    }
+	stage ('Restoring Nuget')
+    {
+		steps
+		{
+			bat "dotnet restore"	 
+		}
+    }
+	stage ('Clean Code')
+    {
+		steps
+		{
+			bat "dotnet clean"	 
+		}
+    }
+	stage ('Starting Sonarqube Analysis')
+	{
+		steps
+		{
+			withSonarQubeEnv('SonarTestServer')
+			{
+				bat """dotnet "${sonarScanner}" begin /key:$JOB_NAME /name:$JOB_NAME /version:1.0"""
+			}
+		}
+	}
+	stage ('Building Code')
+	{
+		steps
+		{
+			bat "dotnet build -c Release -o Binaries/app/build"
+		}	
+	}
 	
+	stage ('Ending SonarQube Analysis')
+	{	
+		steps
+		{
+		    withSonarQubeEnv('SonarTestServer')
+			{
+				bat """dotnet "${sonarScanner}" end"""
+			}
+		}
+	}
+	stage ('Publishing Release Artifacts')
+	{
+	    steps
+	    {
+	        bat "dotnet publish -c Release -o Binaries/app/publish"
+	    }
+	}
+	stage('Run Unit Tests')
+	{
+		steps
+		{
+		  dir('Binaries/app/publish')
+		  {
+			bat """"${MSTest}" CoreAppMSTest.dll /Logger:trx"""
+		  }
+		}
+	}
+	
+	stage ('Building Docker Image')
+	{
+		steps
+		{
+		    bat label: '', script: 'docker build --no-cache -t vipulchohan_coreapp:${BUILD_NUMBER} .'
+		}
+	}
 	stage ('Stop Running Container If Any')
 	{
 		steps
         {
-				//Remove By Port
-				bat """set ContainerIDByPort = docker ps | grep 5435 | cut -d " " -f 1 && (docker stop %ContainerIDByPort% && docker rm -fv %ContainerIDByPort%) || true """
-				
-				
+                bat """docker ps -q --filter "name=vipulchohan_devopscoreapp" | grep -q --filter "name=vipulchohan_devopscoreapp" && (docker stop vipulchohan_devopscoreapp && docker rm -fv vipulchohan_devopscoreapp) || true """
 				
         }
 
 	}
-
+	stage ('Docker Deployment')
+	{
+	    steps
+	    {
+	       bat label: '', script: 'docker run --name vipulchohan_devopscoreapp -d -p 5435:80 vipulchohan_coreapp:${BUILD_NUMBER}'
+	    }
+	}
 	
 }
 
