@@ -35,11 +35,4 @@ stages
 	}
 	
 }
-
- post {
-         always 
-		{
-			
-        }
-    }
 }
