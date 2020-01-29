@@ -25,13 +25,33 @@ options
      
 stages
 {
+	
 	stage ('Stop Running Container If Any')
 	{
 		steps
         {
-                bat """docker ps | grep 5435 | cut -d " " -f 1 && (docker stop vipulchohan_devopscoreapp && docker rm -fv vipulchohan_devopscoreapp) || true """
+				//Remove By Port
+				bat """set ContainerIDByPort = docker ps | grep 5435 | cut -d " " -f 1 && (docker stop %ContainerIDByPort% && docker rm -fv %ContainerIDByPort%) || true """
+				
+				
+				
         }
 
-	}	
+	}
+	stage ('Docker Deployment')
+	{
+	    steps
+	    {
+	       bat label: '', script: 'docker run --name vipulchohan_devopscoreapp -d -p 5435:80 vipulchohan_coreapp:8'
+	    }
+	}
+	
 }
+
+ post {
+         always 
+		{
+			emailext attachmentsPattern: 'report.html', body: '${JELLY_SCRIPT,template="health"}', mimeType: 'text/html', recipientProviders: [[$class: 'RequesterRecipientProvider']], replyTo: 'vipul.chohan@nagarro.com', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'vipul.chohan@nagarro.com'
+        }
+    }
 }
