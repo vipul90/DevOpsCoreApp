@@ -103,7 +103,7 @@ stages
 	{
 		steps
         {
-                bat """docker ps -q --filter "name=vipulchohan_devopscoreapp" | grep -q --filter "name=vipulchohan_devopscoreapp" && (docker stop vipulchohan_devopscoreapp && docker rm -fv vipulchohan_devopscoreapp) || true """
+				bat """docker ps -q --filter "name=vipulchohan_devopscoreapp" | grep -q . && (docker stop vipulchohan_devopscoreapp && docker rm -fv vipulchohan_devopscoreapp) || true """
 				
         }
 
