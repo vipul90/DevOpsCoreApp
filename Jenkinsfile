@@ -29,7 +29,7 @@ stages
 	{
 	    steps
 	    {
-	        bat "set ContainerIDByPort=\$(docker ps | grep 5435 | cut -d " " -f 1) "
+	        bat """ContainerIDByPort=docker ps | grep 5435 | cut -d " " -f 1 """
 	    }
 	}
 	
