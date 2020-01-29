@@ -38,13 +38,7 @@ stages
         }
 
 	}
-	stage ('Docker Deployment')
-	{
-	    steps
-	    {
-	       bat label: '', script: 'docker run --name vipulchohan_devopscoreapp -d -p 5435:80 vipulchohan_coreapp:8'
-	    }
-	}
+
 	
 }
 
